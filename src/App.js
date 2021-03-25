@@ -1,5 +1,6 @@
 import ToArabicNumeralInput from './components/toArabicNumeral/toArabicNumeral'
 import ToRomanNumeralInput from './components/toRomanNumeral/toRomanNumeral'
+import { useSelector } from 'react-redux'
 import './App.css';
 
 function App() {
@@ -18,6 +19,8 @@ function App() {
           <ToRomanNumeralInput />
         </div>
       </div>
+
+      <div>{useSelector(state => state.ops.error)}</div>
     </div>
   );
 }

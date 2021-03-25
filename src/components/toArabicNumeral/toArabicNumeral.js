@@ -9,7 +9,6 @@ function ToArabicNumeralInput() {
   const output = useSelector(state => state.ops.toArabicNumeralOutput)
   const dispatch = useDispatch()
   const onConvertClick = () => {
-      console.log(input)
     if (input !== '') {
       dispatch(
         convertToArabicNumeral(input)
