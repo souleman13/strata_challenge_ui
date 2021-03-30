@@ -7,6 +7,7 @@ const initialState = {
     error: ''
 }
 
+//action
 export const convertToRomanNumeral = createAsyncThunk('ops/convertToRomanNumeral', async (input) => {
     const fetchProps = {
         method: 'post',
@@ -18,6 +19,7 @@ export const convertToRomanNumeral = createAsyncThunk('ops/convertToRomanNumeral
     return response.result
 })
 
+//action
 export const convertToArabicNumeral = createAsyncThunk('ops/convertToArabicNumeral', async (input) => {
     const fetchProps = {
         method: 'post',
@@ -29,6 +31,7 @@ export const convertToArabicNumeral = createAsyncThunk('ops/convertToArabicNumer
     return response
 })
 
+//reducers
 const operationSlice = createSlice({
     name: 'ops',
     initialState,
@@ -39,24 +42,24 @@ const operationSlice = createSlice({
             state.loading = true
         },
         [convertToRomanNumeral.fulfilled]: (state, action) => {
-            state.status = false
+            state.loading = false
             state.error = action.payload.error
             state.toRomanNumeralOutput = action.payload.result
         },
         [convertToRomanNumeral.rejected]: (state, action) => {
-            state.status = false
+            state.loading = false
             state.errror = action.payload.error.message
         },
         [convertToArabicNumeral.pending]: (state, action) => {
             state.loading = true
         },
         [convertToArabicNumeral.fulfilled]: (state, action) => {
-            state.status = false
+            state.loading = false
             state.error = action.payload.error
             state.toArabicNumeralOutput = action.payload.result
         },
         [convertToArabicNumeral.rejected]: (state, action) => {
-            state.status = false
+            state.loading = false
             state.error = action.payload.error.message
         }
     }
